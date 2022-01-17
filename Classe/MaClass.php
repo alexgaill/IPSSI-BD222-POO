@@ -11,8 +11,10 @@ class MaClass {
      * 
      * public: Elle permet d'utiliser l'élément partout dans le code
      * private: Limite l'utilisation de l'élément à la classe 
+     *          dans laquelle il est déclaré uniquement
+     * protected: Limite l'utilisation de l'élément à la classe
      *          dans laquelle il est déclaré
-     * protected: 
+     *          et dans les class enfants
      * 
      * Définir la visibilité de nos éléments s'appelle l'encapsulation
      */
