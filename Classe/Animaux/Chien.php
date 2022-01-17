@@ -1,5 +1,6 @@
 <?php
-require_once "Mammifere.php";
+namespace Classe\Animaux;
+// require_once "Mammifere.php";
 
 /**
  * Une class peut extends d'une autre class. On appelle ça l'héritage

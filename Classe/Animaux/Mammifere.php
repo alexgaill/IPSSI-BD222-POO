@@ -1,4 +1,5 @@
 <?php
+namespace Classe\Animaux;
 
 class Mammifere
 {

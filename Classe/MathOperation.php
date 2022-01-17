@@ -1,4 +1,5 @@
 <?php
+namespace Classe;
 
 /**
  * On déclare une class avec le mot-clé class

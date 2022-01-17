@@ -1,7 +1,22 @@
 <?php
 
-require "Classe/Animaux/Chien.php";
-require_once "Classe/Animaux/Mammifere.php";
+// require "Classe/Animaux/Chien.php";
+// require_once "Classe/Animaux/Mammifere.php";
+
+// On utilise un autoloader pour charger les class à notre place
+// spl_autoload_register(function (string $class) {
+//     require "Classe/Animaux/$class.php";
+// });
+require "Core/Autoload.php";
+Autoload::register();   
+
+use Classe\Animaux\Chien;
+use Classe\MathOperation;
+use Classe\Animaux\Mammifere;
+
+
+echo (new MathOperation)->addition(1,2);
+
 // On instancie chien en lui passant les paramètres attendus dans le cosntruct
 // $chien1 = new Chien(nom: "Pepper", couleur: "gris", race: "lévrier", age: 3);
 $chien1 = new Chien("Pepper", "gris", "lévrier", 3);

@@ -1,5 +1,7 @@
 <?php
-require_once "Mammifere.php";
+namespace Classe\Animaux;
+
+// require_once "Mammifere.php";
 class Chat extends Mammifere
 {
 
