@@ -7,8 +7,10 @@
 // spl_autoload_register(function (string $class) {
 //     require "Classe/Animaux/$class.php";
 // });
-require "Core/Autoload.php";
-Autoload::register();   
+// require "Core/Autoload.php";
+// Autoload::register();   
+
+require "vendor/autoload.php";
 
 use Classe\Animaux\Chien;
 use Classe\MathOperation;

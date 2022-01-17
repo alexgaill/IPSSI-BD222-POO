@@ -4,7 +4,7 @@ class Autoload {
 
     public static function autoloader (string $class) {
         $class = str_replace("\\", "/", $class);
-        require "$class.php";
+        require_once "$class.php";
     }
 
     public static function register()
