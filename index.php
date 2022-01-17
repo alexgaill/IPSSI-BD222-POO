@@ -1,32 +1,18 @@
 <?php
 
-$num1 =3;
-$num2 = 7;
-$num3 = 12;
-$num4 = 56;
-
-// echo addition($num1, $num2, $num3, $num4);
-
-//Pour utiliser notre class, il faut la charger avec un require
-require "Classe/MathOperation.php";
-
-/**
- * On instancie la class pour obtenir un objet
- */
-$math = new MathOperation();
-var_dump($math);
+require "Classe/Animaux/Chien.php";
+// On instancie chien en lui passant les paramètres attendus dans le cosntruct
+// $chien1 = new Chien(nom: "Pepper", couleur: "gris", race: "lévrier", age: 3);
+$chien1 = new Chien("Pepper", "gris", "lévrier", 3);
+// var_dump($chien1);
 echo "<br>";
-echo $math->addition($num1, $num2, $num3, $num4);
+echo $chien1->getNom();
+echo $chien1->setNom("Saucisse");
 echo "<br>";
-
-require "Classe/MaClass.php";
-
-$maclass = new MaClass;
-var_dump($maclass);
+echo $chien1->getNom();
 echo "<br>";
-echo $maclass->prop2;
-echo "<br>";
-echo $maclass->getProp1();
-echo "<br>";
-echo $maclass->methodeWithParam("Salut");
-// echo $maclass->prop1; // inaccessible car private
+// S'il manque l'un des paramètres attendus dans le construct, 
+// le script nous retourne une erreur
+$chien2 = new Chien("Rex", "marron", "chihuahua", 4);
+// var_dump($chien2);
+// $chien3 = new Chien(444, ["marron", "noir"], "chihuahua", "4 ans");

@@ -43,4 +43,6 @@ class MaClass {
         // de cet objet
         return $this->prop1;
     }
+
+    public function test ($prop1, $prop2 = [], $prop3 = "string"){}
 }
