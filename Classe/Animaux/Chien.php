@@ -75,9 +75,85 @@ class Chien
      * Cette méthode est un setter ou un mutateur
      * Elle permet de définir ou de modifier la valeur d'une propriété
      * @param string $nom
+     * @return self
      */
-    public function setNom(string $nom)
+    public function setNom(string $nom):self
     {
         $this->nom = $nom;
+
+        return $this;
+
+    }
+
+    /**
+     * Get the value of couleur
+     *
+     * @return string
+     */
+    public function getCouleur(): string
+    {
+        return $this->couleur;
+    }
+
+    /**
+     * Set the value of couleur
+     *
+     * @param string $couleur
+     *
+     * @return self
+     */
+    public function setCouleur(string $couleur): self
+    {
+        $this->couleur = $couleur;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of race
+     *
+     * @return string
+     */
+    public function getRace(): string
+    {
+        return $this->race;
+    }
+
+    /**
+     * Set the value of race
+     *
+     * @param string $race
+     *
+     * @return self
+     */
+    public function setRace(string $race): self
+    {
+        $this->race = $race;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of age
+     *
+     * @return int
+     */
+    public function getAge(): int
+    {
+        return $this->age;
+    }
+
+    /**
+     * Set the value of age
+     *
+     * @param int $age
+     *
+     * @return self
+     */
+    public function setAge(int $age): self
+    {
+        $this->age = $age;
+
+        return $this;
     }
 }

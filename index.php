@@ -16,3 +16,4 @@ echo "<br>";
 $chien2 = new Chien("Rex", "marron", "chihuahua", 4);
 // var_dump($chien2);
 // $chien3 = new Chien(444, ["marron", "noir"], "chihuahua", "4 ans");
+// $chien2->setNom("Saucisse")->setCouleur("gris")->setAge(5); // Possible grâce aux return $this des setter qui correspond au design pattern fluent
