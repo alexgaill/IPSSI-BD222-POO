@@ -7,14 +7,29 @@ namespace Core\Database;
  */
 class Database{
 
+    /**
+     * @var string
+     */
     private string $host;
 
+    /**
+     * @var string
+     */
     private string $user;
 
+    /**
+     * @var string
+     */
     private string $pass;
 
+    /**
+     * @var \PDO|null
+     */
     public \PDO|null $pdo;
 
+    /**
+     * Charge la connexion à la BDD à l'instanciation de la class
+     */
     public function __construct()
     {
         $this->getConfig();
@@ -23,6 +38,9 @@ class Database{
         ]);
     }
 
+    /**
+     * Hydrate les propriétés de connexion à partir du fichier dbConfig
+     */
     private function getConfig ()
     {
         require ROOT ."/config/dbConfig.php";
