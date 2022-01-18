@@ -4,7 +4,13 @@ namespace App\Manager;
 use Core\Database\Database;
 
 class CategorieManager{
-    // Définir des méthodes pour chaque page liée aux catégories
+    
+    public function __construct()
+    {
+        // On créé la connexion à Database dans le construct 
+        // car on l'utilise dans toutes les méthodes du manager
+        $this->pdo = (new Database)->pdo;
+    }
 
     /**
      * Page présentant la liste des catégories du blog
@@ -13,9 +19,8 @@ class CategorieManager{
      */
     public function index()
     {
-        $pdo = (new Database)->pdo;
         $stmt = "SELECT * FROM categorie";
-        $query = $pdo->query($stmt, \PDO::FETCH_OBJ);
+        $query = $this->pdo->query($stmt, \PDO::FETCH_OBJ);
         $categories = $query->fetchAll();
         require ROOT."/templates/categorie/index.php";
     }
@@ -28,9 +33,8 @@ class CategorieManager{
     public function single ()
     {
         if (isset($_GET["id"]) && !empty($_GET["id"]) && is_numeric($_GET["id"])) {
-            $pdo = (new Database)->pdo;
             $stmt = "SELECT * FROM categorie where id = ".$_GET["id"];
-            $query = $pdo->query($stmt);
+            $query = $this->pdo->query($stmt);
             // $categorie = $query->fetch(\PDO::FETCH_OBJ);
             $categorie = $query->fetchObject();
             require ROOT."/templates/categorie/single.php";
@@ -40,9 +44,8 @@ class CategorieManager{
     public function save()
     {
         if (isset($_POST["name"]) && !empty($_POST["name"])) {
-            $pdo = (new Database)->pdo;
             $stmt = "INSERT INTO categorie (name) VALUES (:name)";
-            $prpr = $pdo->prepare($stmt);
+            $prpr = $this->pdo->prepare($stmt);
             if($prpr->execute($_POST)){
                 echo "La categorie ". $_POST["name"] ." a été enregistrée";
             }
@@ -53,18 +56,16 @@ class CategorieManager{
     public function update()
     {
         if (isset($_GET["id"]) && !empty($_GET["id"]) && is_numeric($_GET["id"])) {
-            $pdo = (new Database)->pdo;
-
             if (isset($_POST["name"]) && !empty($_POST["name"])) {
                 $stmt = "UPDATE categorie SET name = :name WHERE id = ". $_GET["id"];
-                $prpr = $pdo->prepare($stmt);
+                $prpr = $this->pdo->prepare($stmt);
                 if($prpr->execute($_POST)){
                     echo "La categorie ". $_POST["name"] ." a été modifiée";
                 }
             }
 
             $stmt = "SELECT * FROM categorie where id = ".$_GET["id"];
-            $query = $pdo->query($stmt);
+            $query = $this->pdo->query($stmt);
             $categorie = $query->fetchObject();
             require ROOT."/templates/categorie/update.php";
         }
@@ -73,10 +74,8 @@ class CategorieManager{
     public function delete()
     {
         if (isset($_GET["id"]) && !empty($_GET["id"]) && is_numeric($_GET["id"])) {
-            $pdo = (new Database)->pdo;
-
             $stmt = "DELETE FROM categorie where id = ".$_GET["id"];
-            if($pdo->query($stmt) instanceof \PDOStatement){
+            if($this->pdo->query($stmt) instanceof \PDOStatement){
                 echo "La catégorie a été supprimée";
             }
         }
