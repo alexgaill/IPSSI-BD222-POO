@@ -19,6 +19,13 @@ class Categorie extends DefaultEntity{
      */
     private string $name;
 
+    public function __invoke()
+    {
+        return [
+            "name" => $this->name
+        ];
+    }
+
     /**
      * Get the value of id
      *

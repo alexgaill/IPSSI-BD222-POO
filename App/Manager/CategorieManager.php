@@ -54,12 +54,11 @@ class CategorieManager{
     {
         if (isset($_POST["name"]) && !empty($_POST["name"])) {
             $categorie = new Categorie($_POST);
-            var_dump($categorie);
             $stmt = "INSERT INTO categorie (name) VALUES (:name)";
             $prpr = $this->pdo->prepare($stmt);
-            // if($prpr->execute($_POST)){
-            //     echo "La categorie ". $_POST["name"] ." a été enregistrée";
-            // }
+            if($prpr->execute($categorie)){
+                echo "La categorie ". $_POST["name"] ." a été enregistrée";
+            }
         }
         require ROOT."/templates/categorie/save.php";
     }
