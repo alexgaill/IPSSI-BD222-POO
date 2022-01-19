@@ -9,4 +9,4 @@ define("ROOT", dirname(__DIR__));
 require ROOT. "/vendor/autoload.php";
 
 // (new CategorieManager)->index();
-(new CategorieManager)->index();
+(new CategorieManager)->save();

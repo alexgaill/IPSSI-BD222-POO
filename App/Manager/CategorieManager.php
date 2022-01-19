@@ -1,6 +1,7 @@
 <?php
 namespace App\Manager;
 
+use App\Entity\Categorie;
 use Core\Database\Database;
 
 class CategorieManager{
@@ -24,6 +25,7 @@ class CategorieManager{
         // $query->setFetchMode(\PDO::FETCH_OBJ);
         $query = $this->pdo->query($stmt, \PDO::FETCH_CLASS, "App\Entity\Categorie");
         $categories = $query->fetchAll();
+        
         require ROOT."/templates/categorie/index.php";
     }
 
@@ -51,11 +53,13 @@ class CategorieManager{
     public function save()
     {
         if (isset($_POST["name"]) && !empty($_POST["name"])) {
+            $categorie = new Categorie($_POST);
+            var_dump($categorie);
             $stmt = "INSERT INTO categorie (name) VALUES (:name)";
             $prpr = $this->pdo->prepare($stmt);
-            if($prpr->execute($_POST)){
-                echo "La categorie ". $_POST["name"] ." a été enregistrée";
-            }
+            // if($prpr->execute($_POST)){
+            //     echo "La categorie ". $_POST["name"] ." a été enregistrée";
+            // }
         }
         require ROOT."/templates/categorie/save.php";
     }

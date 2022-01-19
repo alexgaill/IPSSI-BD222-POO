@@ -1,7 +1,9 @@
 <?php
 namespace App\Entity;
 
-class Article {
+use Core\Entity\DefaultEntity;
+
+class Article extends DefaultEntity{
 
     private int $id;
 
