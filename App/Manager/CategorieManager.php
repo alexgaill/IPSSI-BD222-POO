@@ -20,7 +20,9 @@ class CategorieManager{
     public function index()
     {
         $stmt = "SELECT * FROM categorie";
-        $query = $this->pdo->query($stmt, \PDO::FETCH_OBJ);
+        // $query = $this->pdo->query($stmt, \PDO::FETCH_OBJ);
+        // $query->setFetchMode(\PDO::FETCH_OBJ);
+        $query = $this->pdo->query($stmt, \PDO::FETCH_CLASS, "App\Entity\Categorie");
         $categories = $query->fetchAll();
         require ROOT."/templates/categorie/index.php";
     }
@@ -41,6 +43,11 @@ class CategorieManager{
         }
     }
 
+    /**
+     * Page d'ajout d'une catégorie dans la BDD
+     *
+     * @return void
+     */
     public function save()
     {
         if (isset($_POST["name"]) && !empty($_POST["name"])) {
@@ -53,6 +60,11 @@ class CategorieManager{
         require ROOT."/templates/categorie/save.php";
     }
 
+    /**
+     * Page mettant à jour une catégorie
+     *
+     * @return void
+     */
     public function update()
     {
         if (isset($_GET["id"]) && !empty($_GET["id"]) && is_numeric($_GET["id"])) {
@@ -71,6 +83,11 @@ class CategorieManager{
         }
     }
 
+    /**
+     * Page supprimant une catégorie
+     *
+     * @return void
+     */
     public function delete()
     {
         if (isset($_GET["id"]) && !empty($_GET["id"]) && is_numeric($_GET["id"])) {

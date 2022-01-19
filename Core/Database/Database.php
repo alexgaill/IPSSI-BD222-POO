@@ -15,6 +15,11 @@ class Database{
     /**
      * @var string
      */
+    private string $dbname;
+
+    /**
+     * @var string
+     */
     private string $user;
 
     /**

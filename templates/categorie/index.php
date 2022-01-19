@@ -11,7 +11,7 @@
 
     <ul>
         <?php foreach ($categories as $cat):  ?>
-            <li><a href=""><?= $cat->name ?></a></li>
+            <li><a href=""><?= $cat->getName() ?></a></li>
         <?php endforeach; ?>
     </ul>
 </body>
