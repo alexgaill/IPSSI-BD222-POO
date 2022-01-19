@@ -19,7 +19,12 @@ class Categorie extends DefaultEntity{
      */
     private string $name;
 
-    public function __invoke()
+    /**
+     * Retourne un tableau contenant les données de l'entité
+     *
+     * @return array
+     */
+    public function __invoke() :array
     {
         return [
             "name" => $this->getName()

@@ -5,16 +5,34 @@ use Core\Entity\DefaultEntity;
 
 class Article extends DefaultEntity{
 
+    /**
+     * @var integer
+     */
     private int $id;
 
+    /**
+     * @var string
+     */
     private string $title;
 
+    /**
+     * @var string
+     */
     private string $content;
 
+    /**
+     * @var integer
+     */
     private int $categorie_id;
 
+    /**
+     * @var integer
+     */
     private int $user_id;
 
+    /**
+     * @var string
+     */
     private string $picture;
 
     /**
