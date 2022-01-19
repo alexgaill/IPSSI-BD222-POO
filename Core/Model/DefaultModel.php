@@ -92,7 +92,7 @@ class DefaultModel extends Database{
      * @param boolean $one si true retourne un objet sinon retourne un tableau d'objets
      * @return object|array
      */
-    protected function getQuery(string $stmt = "", bool $one = false): ?object
+    protected function getQuery(string $stmt = "", bool $one = false): object|array
     {
         if (empty($stmt)) {
             $stmt = "SELECT * FROM $this->table";
