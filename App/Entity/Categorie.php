@@ -22,7 +22,7 @@ class Categorie extends DefaultEntity{
     public function __invoke()
     {
         return [
-            "name" => $this->name
+            "name" => $this->getName()
         ];
     }
 

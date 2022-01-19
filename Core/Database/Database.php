@@ -30,7 +30,7 @@ class Database{
     /**
      * @var \PDO|null
      */
-    public \PDO|null $pdo;
+    protected \PDO|null $pdo;
 
     /**
      * Charge la connexion à la BDD à l'instanciation de la class

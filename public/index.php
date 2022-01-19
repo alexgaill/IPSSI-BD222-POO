@@ -1,12 +1,11 @@
 <?php
 // Permet de définir une constante comme const
 
-use App\Manager\ArticleManager;
-use App\Manager\CategorieManager;
+use App\Controller\CategorieController;
 
 define("ROOT", dirname(__DIR__));
 
 require ROOT. "/vendor/autoload.php";
 
 // (new CategorieManager)->index();
-(new CategorieManager)->save();
+(new CategorieController)->index();
