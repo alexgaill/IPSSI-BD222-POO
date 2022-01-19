@@ -3,6 +3,12 @@ namespace Core\Model;
 
 use Core\Database\Database;
 
+/**
+ * @method array|false findAll() Récupère un tableau d'objets en BDD
+ * @method object|false find(int $id) Récupère une objet en fonction d'un id
+ * @method bool defaultSave(string $stmt, array $data) Ajoute un objet ou le modifie dans la BDD
+ * @method bool delete(int $id) Supprime un objet en BDD
+ */
 class DefaultModel extends Database{
 
     /**
@@ -36,9 +42,7 @@ class DefaultModel extends Database{
      */
     public function findAll(): ?array
     {
-        $stmt = "SELECT * FROM $this->table";
-        $query = $this->pdo->query($stmt, \PDO::FETCH_CLASS, $this->classe);
-        return $query->fetchAll();
+        return $this->getQuery();
     }
 
      /**
@@ -50,8 +54,7 @@ class DefaultModel extends Database{
     public function find(int $id): ?object
     {
         $stmt = "SELECT * FROM $this->table where id = $id";
-        $query = $this->pdo->query($stmt);
-        return $query->fetchObject($this->classe);
+        return $this->getQuery($stmt, true);
     }
 
     /**
@@ -80,5 +83,24 @@ class DefaultModel extends Database{
             return true;
         }
         return false;
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @param string $stmt requête à exécuter pour récupérer les données
+     * @param boolean $one si true retourne un objet sinon retourne un tableau d'objets
+     * @return object|array
+     */
+    protected function getQuery(string $stmt = "", bool $one = false): ?object
+    {
+        if (empty($stmt)) {
+            $stmt = "SELECT * FROM $this->table";
+        }
+        $query = $this->pdo->query($stmt, \PDO::FETCH_CLASS, $this->classe);
+        if ($one) {
+            return $query->fetch();
+        }
+        return $query->fetchAll();
     }
 }

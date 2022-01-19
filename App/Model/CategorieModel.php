@@ -1,7 +1,6 @@
 <?php
 namespace App\Model;
 
-use App\Entity\Categorie;
 use Core\Model\DefaultModel;
 
 class CategorieModel extends DefaultModel{

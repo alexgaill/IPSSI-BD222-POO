@@ -15,9 +15,8 @@ class ArticleModel extends DefaultModel
         $stmt = "SELECT article.id as id, title, content, categorie.name 
                     FROM article
                     INNER JOIN categorie ON article.categorie_id = categorie.id
-                    WHERE article.id = " . $_GET["id"];
-        $query = $this->pdo->query($stmt);
-        return $query->fetchObject($this->classe);
+                    WHERE article.id = $id";
+        return $this->getQuery($stmt, true);
     }
 
     public function save(array $data): bool
