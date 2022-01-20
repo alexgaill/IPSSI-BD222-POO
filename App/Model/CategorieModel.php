@@ -11,9 +11,9 @@ class CategorieModel extends DefaultModel{
      * Ajoute une catégorie en BDD
      *
      * @param array $data Données à enregistrer en BDD
-     * @return boolean
+     * @return int|boolean
      */ 
-    public function save (array $data): bool
+    public function save (array $data): int|bool
     {
         return $this->defaultSave("INSERT INTO categorie (name) VALUES (:name)", $data);
     }

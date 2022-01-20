@@ -1,6 +1,8 @@
 <?php
 
 use App\Controller\Articlecontroller;
+use App\Fixtures\AppFixtures;
+
 // use App\Controller\CategorieController;
 // use App\Controller\ErrorController;
 
@@ -34,7 +36,7 @@ use App\Controller\Articlecontroller;
 //         case 'deleteCat':
 //             (new CategorieController)->delete();
 //             break;
-        
+
 //         default:
 //             (new ErrorController)->pageError();
 //             break;
@@ -48,12 +50,15 @@ use App\Controller\Articlecontroller;
 
 if (isset($_SERVER["PATH_INFO"])) {
     $dataRouter = explode("/", $_SERVER["PATH_INFO"]);
-    $controller = "App\Controller\\" . ucfirst($dataRouter[1])."Controller";
-    $method = $dataRouter[2];
-    $param = isset($dataRouter[3]) ? $dataRouter[3] : null;
 
-    (new $controller)->$method($param);
-
+    if ($dataRouter[1] == 'fixtures') {
+        (new AppFixtures)->load();
+    } else {
+        $controller = "App\Controller\\" . ucfirst($dataRouter[1]) . "Controller";
+        $method = $dataRouter[2];
+        $param = isset($dataRouter[3]) ? $dataRouter[3] : null;
+        (new $controller)->$method($param);
+    }
 } else {
     (new Articlecontroller)->index();
 }
