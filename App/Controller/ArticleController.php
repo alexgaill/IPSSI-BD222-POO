@@ -4,8 +4,14 @@ namespace App\Controller;
 use App\Model\ArticleModel;
 use App\Model\CategorieModel;
 use Core\Controller\DefaultController;
+use Core\Trait\SecurityDataTrait;
 
-class Articlecontroller extends DefaultController{
+class ArticleController extends DefaultController{
+
+    /**
+     * Permet d'utiliser un trait et de charger les propriétés et les méthodes du trait dans la class
+     */
+    use SecurityDataTrait;
 
     public function __construct()
     {
@@ -48,7 +54,7 @@ class Articlecontroller extends DefaultController{
             (isset($_POST["content"]) && !empty($_POST["content"])) && 
             (isset($_POST["categorie_id"]) && !empty($_POST["categorie_id"]))
         ) {
-            $result = $this->model->save($_POST);
+            $result = $this->model->save($this->secureData($_POST));
             if ($result) {
                 header("Location: /article/single/$result");
             } else {
