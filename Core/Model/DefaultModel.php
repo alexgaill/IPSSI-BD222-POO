@@ -40,7 +40,7 @@ class DefaultModel extends Database{
      *
      * @return array|false
      */
-    public function findAll(): ?array
+    public function findAll(): array|bool
     {
         return $this->getQuery();
     }
@@ -51,10 +51,20 @@ class DefaultModel extends Database{
      * @param integer $id Id de l'objet à récupérer
      * @return object|false
      */
-    public function find(int $id): ?object
+    public function find(int $id): object|bool
     {
         $stmt = "SELECT * FROM $this->table where id = $id";
         return $this->getQuery($stmt, true);
+    }
+
+    public function findBy(array $criteria): array|bool
+    {
+        return [];
+    }
+    
+    public function findOneBy(array $criteria):object|bool
+    {
+        return false;
     }
 
     /**
