@@ -12,14 +12,20 @@ class ArticleModel extends DefaultModel
 
     public function findWithCategorie(int $id): Article
     {
-        $stmt = "SELECT article.id as id, title, content, categorie.name 
+        $stmt = "SELECT article.id as id, title, content, categorie.name, categorie.id as catId
                     FROM article
                     INNER JOIN categorie ON article.categorie_id = categorie.id
                     WHERE article.id = $id";
         return $this->getQuery($stmt, true);
     }
 
-    public function save(array $data): bool
+    /**
+     * 
+     *
+     * @param array $data
+     * @return integer|bool
+     */
+    public function save(array $data): int|bool
     {
         $stmt = "INSERT INTO article (title, content, categorie_id, user_id) 
             VALUES (:title, :content, :categorie_id, 1)";

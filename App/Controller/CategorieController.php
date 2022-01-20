@@ -33,16 +33,12 @@ class CategorieController extends DefaultController
      *
      * @return void
      */
-    public function single()
+    public function single(int $id)
     {
-        if (isset($_GET["id"]) && !empty($_GET["id"]) && is_numeric($_GET["id"])) {
             $this->render("categorie/single", [
-                "categorie" => $this->model->find($_GET["id"])
+                "categorie" => $this->model->find($id)
             ]);
-        } else {
-            // TODO: Rediriger vers une autre page
-            throw new Exception("La redirection est manquante");
-        }
+
     }
 
     /**
@@ -54,9 +50,9 @@ class CategorieController extends DefaultController
     {
         if (isset($_POST["name"]) && !empty($_POST["name"])) {
             $categorie = new Categorie($_POST);
-            if ($this->model->save($_POST)) {
-                // TODO: Rediriger vers une autre page
-                throw new Exception("La redirection est manquante");
+            $result = $this->model->save($_POST);
+            if ($result) {
+                header("Location: /categorie/single/$result");
             } else {
                 $error =  "Une erreur s'est produite merci de réessayer";
             }
@@ -69,21 +65,21 @@ class CategorieController extends DefaultController
      *
      * @return void
      */
-    public function update()
+    public function update(int $id)
     {
-        if (isset($_GET["id"]) && !empty($_GET["id"]) && is_numeric($_GET["id"])) {
+        // if (isset($_GET["id"]) && !empty($_GET["id"]) && is_numeric($_GET["id"])) {
             if (isset($_POST["name"]) && !empty($_POST["name"])) {
-                if ($this->model->update($_POST, $_GET["id"])) {
-                    // TODO: Rediriger vers une autre page
-                    throw new Exception("La redirection est manquante");
+                if ($this->model->update($_POST, $id)) {
+                    header("Location: /categorie/single/$id");
+
                 } else {
                     $error =  "Une erreur s'est produite merci de réessayer";
                 }
             }
             $this->render("categorie/update", [
-                "categorie" => $this->model->find($_GET["id"])
+                "categorie" => $this->model->find($id)
             ]);
-        }
+        // }
     }
 
     /**
@@ -91,15 +87,15 @@ class CategorieController extends DefaultController
      *
      * @return void
      */
-    public function delete()
+    public function delete(int $id)
     {
-        if (isset($_GET["id"]) && !empty($_GET["id"]) && is_numeric($_GET["id"])) {
-            if ($this->model->delete($_GET["id"])) {
-                // TODO: Rediriger vers une autre page
-                throw new Exception("La redirection est manquante");
+        // if (isset($_GET["id"]) && !empty($_GET["id"]) && is_numeric($_GET["id"])) {
+            if ($this->model->delete($id)) {
+                header("Location: /categorie/index");
+
             } else {
                 echo "Erreur lors de la suppression";
             }
-        }
+        // }
     }
 }

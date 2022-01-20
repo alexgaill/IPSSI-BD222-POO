@@ -9,7 +9,7 @@
         <label for="">
             <select name="categorie_id" id="">
                 <?php foreach($categories as $categorie): ?>
-                    <option value="<?= $categorie->id ?>"><?= $categorie->name ?></option>
+                    <option value="<?= $categorie->getId() ?>"><?= $categorie->getName() ?></option>
                 <?php endforeach; ?>
             </select>
         </label>

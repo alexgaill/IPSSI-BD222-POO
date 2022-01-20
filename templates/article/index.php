@@ -2,6 +2,6 @@
 
     <ul>
         <?php foreach ($articles as $article):  ?>
-            <li><a href=""><?= $article->title ?></a></li>
+            <li><a href="/article/single/<?= $article->getId() ?>"><?= $article->getTitle() ?></a></li>
         <?php endforeach; ?>
     </ul>

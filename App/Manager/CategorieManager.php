@@ -56,7 +56,7 @@ class CategorieManager{
             $categorie = new Categorie($_POST);
             $stmt = "INSERT INTO categorie (name) VALUES (:name)";
             $prpr = $this->pdo->prepare($stmt);
-            if($prpr->execute($categorie)){
+            if($prpr->execute($categorie())){
                 echo "La categorie ". $_POST["name"] ." a été enregistrée";
             }
         }

@@ -31,9 +31,9 @@ class Article extends DefaultEntity{
     private int $user_id;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private string $picture;
+    private ?string $picture;
 
     /**
      * Get the value of id
@@ -120,9 +120,9 @@ class Article extends DefaultEntity{
     /**
      * Get the value of picture
      *
-     * @return string
+     * @return string|null
      */
-    public function getPicture(): string
+    public function getPicture(): ?string
     {
         return $this->picture;
     }
@@ -134,7 +134,7 @@ class Article extends DefaultEntity{
      *
      * @return self
      */
-    public function setPicture(string $picture): self
+    public function setPicture(?string $picture): self
     {
         $this->picture = $picture;
 

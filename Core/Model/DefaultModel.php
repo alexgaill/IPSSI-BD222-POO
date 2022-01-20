@@ -62,12 +62,17 @@ class DefaultModel extends Database{
      *
      * @param string $stmt Requête à exécuter
      * @param array $data Données à enregistrer
-     * @return boolean
+     * @return int|bool
      */
-    protected function defaultSave (string $stmt, array $data): bool
+    protected function defaultSave (string $stmt, array $data): int|bool
     {
         $prpr = $this->pdo->prepare($stmt);
-        return $prpr->execute($data);
+        if (str_contains($stmt, "INSERT INTO")) {
+            $prpr->execute($data);
+            return $this->pdo->lastInsertId();
+        } else {
+            return $prpr->execute($data);
+        }
     }
 
     /**
