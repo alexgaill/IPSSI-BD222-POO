@@ -5,7 +5,7 @@ namespace App\Model;
 use App\Entity\Article;
 use Core\Model\DefaultModel;
 
-class ArticleModel extends DefaultModel
+final class ArticleModel extends DefaultModel
 {
 
     protected string $table = "article"; 

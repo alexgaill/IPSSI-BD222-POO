@@ -3,7 +3,7 @@ namespace App\Model;
 
 use Core\Model\DefaultModel;
 
-class CategorieModel extends DefaultModel{
+final class CategorieModel extends DefaultModel{
 
     protected string $table = "categorie";
     

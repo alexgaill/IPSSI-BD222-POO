@@ -7,7 +7,7 @@ use App\Model\CategorieModel;
 use Core\Controller\DefaultController;
 use Exception;
 
-class CategorieController extends DefaultController
+final class CategorieController extends DefaultController
 {
 
 

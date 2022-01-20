@@ -6,7 +6,12 @@ use App\Model\CategorieModel;
 use Core\Controller\DefaultController;
 use Core\Trait\SecurityDataTrait;
 
-class ArticleController extends DefaultController{
+/**
+ * Une class final est une class qui ne peut pas être utilisée comme parent. 
+ * Elle est l'opposée d'abstract qui indique qu'une class peut voir doit avoir des enfants.
+ * Une final abstract class retournera une erreur car impossible.
+ */
+final class ArticleController extends DefaultController{
 
     /**
      * Permet d'utiliser un trait et de charger les propriétés et les méthodes du trait dans la class
